@@ -27,6 +27,18 @@ Options.prototype = {
     },
     
     create: function() {
+        game.add.sprite(0,0, 'options-bg');
+        game.add.existing(this.titleText);
         
+        this.addMenuOption('Toggle Music', function () {
+           console.log('You Clicked Music Toggle'); 
+        });
+        this.addMenuOption('Toggle SFX', function () {
+           console.log('You Clicked Sound FX Toggle'); 
+        });
+        this.addMenuOption('<-- Back', function () {
+           console.log('You Clicked Back');
+           game.state.start('GameMenu'); 
+        });
     }
 };
