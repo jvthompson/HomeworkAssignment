@@ -1,46 +1,47 @@
-var GameMenu = function () {};
+var GameMenu = function () { };
 
 GameMenu.prototype = {
-    
+
     addMenuOption: function (text, callback) {
         var txt = game.add.text(30, (this.optionCount * 80) + 200, text, style.navitem.default);
         txt.inputEnabled = true;
         txt.events.onInputUp.add(callback);
         txt.events.onInputOver.add(function (target) {
-           target.setStyle(style.navitem.hover); 
+            target.setStyle(style.navitem.hover);
         });
         txt.events.onInputOut.add(function (target) {
-           target.setStyle(style.navitem.default); 
+            target.setStyle(style.navitem.default);
         });
         this.optionCount++;
     },
-    
-    init: function() {
-        this.titleText = game.make.text(game.world.centerX, 100, "Game Title", {
+
+    init: function () {
+        this.titleText = game.make.text(30, 100, "sunrise", {
             font: 'bold 60pt Mario Kart DS',
-            fill: '#FDFFB5',
+            fill: '#fffc5b',
             align: 'center'
         });
-        this.titleText.setShadow(3,3, 'rgba(0,0,0,0.5)', 5);
-        this.titleText.anchor.set(0.5);
+        this.titleText.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
+        //this.titleText.anchor.set(0.5);
         this.optionCount = 1;
     },
-    
-    create: function() {
+
+    create: function () {
         game.stage.disableVisibilityChange = true;
-        
-        game.add.sprite(0,0,'stars');
+
+        game.add.sprite(0, 0, 'menu-bg');
         game.add.existing(this.titleText);
-        
+
         this.addMenuOption('Start', function () {
-           console.log('You clicked Start!'); 
+            game.state.start('Game');
+            console.log('You clicked Start!');
         });
         this.addMenuOption('Options', function () {
-           console.log('You clicked Options!');
-           game.state.start("Options"); 
+            console.log('You clicked Options!');
+            game.state.start("Options");
         });
         this.addMenuOption('Credits', function () {
-           console.log('You clicked Credits!'); 
+            console.log('You clicked Credits!');
         });
     }
 };

@@ -1,7 +1,4 @@
 var Splash = function () {};
-var playSound = true;
-var playMusic = true;
-var music;
 
 Splash.prototype = {
     loadScripts: function (){
@@ -14,13 +11,18 @@ Splash.prototype = {
     },
     
     loadBgm: function () {
-        game.load.audio('junes', 'assets/bgm/junestheme.mp3');
+        game.load.audio('theme', 'assets/bgm/Leaving.mp3');
         game.load.audio('exit', 'assets/bgm/Exit the Premises.mp3');
     },
     
     loadImages: function () {
-        game.load.image('menu-bg', 'assets/images/menu-bg.jpg');
-        game.load.image('options-bg', 'assets/images/options-bg.jpg');
+        game.load.image('menu-bg', 'assets/images/menu-bg.png');
+        game.load.image('options-bg', 'assets/images/options-bg.png');
+        
+        game.load.spritesheet('lux', 'assets/images/lux_fix2.png', 219, 280);
+        
+        game.load.tilemap('gameWorld', 'assets/level.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('tiles', 'assets/images/Tile.png');
     },
     
     loadFonts: function () {
@@ -41,9 +43,9 @@ Splash.prototype = {
     },
 
     addGameMusic: function () {
-        music = game.add.audio('junes');
-        music.loop = true;
-        music.play();
+        musicPlayer = game.add.audio('theme');
+        musicPlayer.loop = true;
+        musicPlayer.play();
     },
     
     init: function () {
@@ -73,6 +75,6 @@ Splash.prototype = {
 
         setTimeout(function () {
             game.state.start("GameMenu");
-        }, 5000);
+        }, 1000);
     }
 }

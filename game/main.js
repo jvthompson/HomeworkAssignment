@@ -1,4 +1,10 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game'), Main = function() {};
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game');
+
+var playSound = true;
+var playMusic = true;
+var musicPlayer;
+
+var Main = function() {};
 
 Main.prototype = {
     preload: function () {
