@@ -18,7 +18,8 @@ Splash.prototype = {
     loadImages: function () {
         game.load.image('menu-bg', 'assets/images/menu-bg.png');
         game.load.image('options-bg', 'assets/images/options-bg.png');
-        
+        game.load.image('sun-small', 'assets/images/sun/sun_full_small.png');
+        game.load.image('sun', 'assets/images/sun/sun_full.png');
         game.load.spritesheet('lux', 'assets/images/lux_fix2.png', 219, 280);
         
         game.load.tilemap('gameWorld', 'assets/level.json', null, Phaser.Tilemap.TILED_JSON);
@@ -28,8 +29,8 @@ Splash.prototype = {
     loadFonts: function () {
         WebFontConfig = {
             custom: {
-                families: ['Mario Kart DS'],
-                urls: ['assets/style/mariokart.css']
+                families: ['Sugarpunch'],
+                urls: ['assets/style/sugarpunch.css']
             }
         }
     },

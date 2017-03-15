@@ -16,8 +16,8 @@ GameMenu.prototype = {
     },
 
     init: function () {
-        this.titleText = game.make.text(30, 100, "sunrise", {
-            font: 'bold 60pt Mario Kart DS',
+        this.titleText = game.make.text(30, 100, "lux", {
+            font: 'bold 60pt Sugarpunch',
             fill: '#fffc5b',
             align: 'center'
         });

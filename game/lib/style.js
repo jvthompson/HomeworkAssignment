@@ -6,7 +6,7 @@ var style;
     style = {
         navitem: {
             base: {
-                font: '30pt Mario Kart DS',
+                font: '30pt Sugarpunch',
                 align: 'left',
                 strokeThickness: 4
             },

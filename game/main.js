@@ -14,6 +14,10 @@ Main.prototype = {
         game.load.script('Splash', 'states/Splash.js');
         game.load.script('utils', 'lib/utils.js');
         game.load.script('style', 'lib/style.js');
+        game.scale.pageAlignHorizontally = true;
+        game.scale.pageAlignVertically = true;
+        game.scale.refresh();
+        $("body").animate({ backgroundColor: "#000000" }, 2000);
     },
     
     create: function () {
