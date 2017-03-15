@@ -35,10 +35,10 @@ Options.prototype = {
            target.text = playMusic ? 'Turn Off Music' : 'Turn On Music';
            musicPlayer.volume = playMusic ? 1 : 0; 
         });
-        this.addMenuOption(playSound ? 'Turn Off SFX' : 'Turn On SFX', function (target) {
-           playSound = !playSound;
-           target.text = playSound ? 'Turn Off SFX' : 'Turn On SFX';
-        });
+        // this.addMenuOption(playSound ? 'Turn Off SFX' : 'Turn On SFX', function (target) {
+        //    playSound = !playSound;
+        //    target.text = playSound ? 'Turn Off SFX' : 'Turn On SFX';
+        // });
         this.addMenuOption('<-- Back', function () {
            game.state.start('GameMenu');
         });

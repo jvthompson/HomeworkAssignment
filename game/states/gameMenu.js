@@ -34,10 +34,12 @@ GameMenu.prototype = {
 
         this.addMenuOption('Start', function () {
             game.state.start('Game');
+            sfxPlayer.play('note1', 0.25);
             console.log('You clicked Start!');
         });
         this.addMenuOption('Options', function () {
             console.log('You clicked Options!');
+            sfxPlayer.play('note2', 0.25);
             game.state.start("Options");
         });
         this.addMenuOption('Credits', function () {

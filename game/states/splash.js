@@ -13,6 +13,8 @@ Splash.prototype = {
     loadBgm: function () {
         game.load.audio('theme', 'assets/bgm/Leaving.mp3');
         game.load.audio('exit', 'assets/bgm/Exit the Premises.mp3');
+        
+        game.load.audio('sfx', 'assets/audio/piano.ogg');
     },
     
     loadImages: function () {
@@ -47,6 +49,22 @@ Splash.prototype = {
         musicPlayer = game.add.audio('theme');
         musicPlayer.loop = true;
         musicPlayer.play();
+        musicPlayer.volume = .25;
+    },
+    
+    createSFXMarkers: function() {
+        
+        sfxPlayer = game.add.audio('sfx');
+        
+        sfxPlayer.addMarker('note1', 0, 3);
+        sfxPlayer.addMarker('note2', 4, 3);
+        sfxPlayer.addMarker('note3', 8, 3);
+        sfxPlayer.addMarker('note4', 12, 3);
+        sfxPlayer.addMarker('note5', 16, 3);
+        sfxPlayer.addMarker('note6', 20, 3);
+        sfxPlayer.addMarker('note7', 24, 3);
+        
+        sfxPlayer.volume = 1;
     },
     
     init: function () {
@@ -73,7 +91,7 @@ Splash.prototype = {
         this.status.setText('Ready!');
         this.addGameMusic();
         this.addGameStates();
-
+        this.createSFXMarkers();
         setTimeout(function () {
             game.state.start("GameMenu");
         }, 1000);
