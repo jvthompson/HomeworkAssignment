@@ -38,7 +38,7 @@ GameMenu.prototype = {
     create: function () {
         game.stage.disableVisibilityChange = true;
 
-        game.add.sprite(0, 0, 'menu-bg');
+        //game.add.sprite(0, 0, 'menu-bg');
         game.add.existing(this.titleText);
 
         this.addMenuOption('Start', function () {
@@ -54,5 +54,10 @@ GameMenu.prototype = {
         this.addMenuOption('Credits', function () {
             console.log('You clicked Credits!');
         });
-    }
+    }, 
+    
+    update: function() {
+        game.stage.backgroundColor = "#000000";
+        
+    },
 };

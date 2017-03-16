@@ -14,7 +14,8 @@ Main.prototype = {
         //game.load.image('loading', 'assets/images/loading.png');
         //game.load.image('brand', 'assets/images/logo.png');
         game.load.image('sun', 'assets/images/sun/sun_full.png');
-        game.load.script('Splash', 'states/Splash.js');
+        game.load.image('sun-small', 'assets/images/sun/sun_full_small.png');
+        game.load.script('Splash', 'states/splash.js');
         game.load.script('utils', 'lib/utils.js');
         game.load.script('style', 'lib/style.js');
         game.scale.pageAlignHorizontally = true;

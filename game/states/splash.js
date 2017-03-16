@@ -21,7 +21,7 @@ Splash.prototype = {
     loadImages: function () {
         game.load.image('menu-bg', 'assets/images/menu-bg.png');
         game.load.image('options-bg', 'assets/images/options-bg.png');
-        game.load.image('sun-small', 'assets/images/sun/sun_full_small.png');
+        
         
         game.load.spritesheet('lux', 'assets/images/lux_fix2.png', 219, 280);
         
@@ -42,8 +42,8 @@ Splash.prototype = {
         game.state.add("GameMenu",GameMenu);
         game.state.add("Game",Game);
         game.state.add("GameOver",GameOver);
-        game.state.add("Credits",Credits);
         game.state.add("Options",Options);
+        //game.state.add("Credits",Credits);
     },
 
     addGameMusic: function () {
@@ -71,8 +71,8 @@ Splash.prototype = {
     
     init: function () {
         //this.loadingBar = game.make.sprite(game.world.centerX-(387/2), 350, "loading");
-        this.sunny = game.add.sprite(800, 600,'sun');
-        this.sunny.scale.setTo(0.5);
+        this.sunny = game.add.sprite(400, 300,'sun');
+        //this.sunny.scale.setTo(0.5);
         this.sunny.anchor.setTo(0.5);
         
         this.status = game.make.text(game.world.centerX, 380, 'Loading...', {fill: 'white'});
@@ -100,5 +100,10 @@ Splash.prototype = {
         setTimeout(function () {
             game.state.start("GameMenu");
         }, 5000);
-    }
+    },
+    
+    update: function() {
+        game.stage.backgroundColor = $("body").css("background-color");
+        
+    },
 }

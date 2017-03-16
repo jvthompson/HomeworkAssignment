@@ -62,7 +62,6 @@ Game.prototype = {
     createWorld: function() {
         map = game.add.tilemap('gameWorld');
         map.addTilesetImage('Tile', 'tiles');
-        map.addTilesetImage('ExtraSet', 'tiles-extra');
         
         layer2 = map.createLayer('BG');
         layer1 = map.createLayer('Ground');

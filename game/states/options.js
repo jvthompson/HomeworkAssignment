@@ -17,7 +17,7 @@ Options.prototype = {
     
     init: function() {
         this.titleText = game.make.text(game.world.centerX, 100, "Options", {
-            font: 'bold 48pt Mario Kart DS',
+            font: 'bold 60pt Sugarpunch',
             fill: '#FDFFB5',
             align: 'center'
         });
@@ -27,7 +27,7 @@ Options.prototype = {
     },
     
     create: function() {
-        game.add.sprite(0,0, 'options-bg');
+        //game.add.sprite(0,0, 'options-bg');
         game.add.existing(this.titleText);
         
         this.addMenuOption(playMusic ? 'Turn Off Music' : 'Turn On Music', function (target) {
