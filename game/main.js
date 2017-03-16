@@ -4,14 +4,16 @@ var playSound = true;
 var playMusic = true;
 var musicPlayer;
 var sfxPlayer;
+var seaSFX;
 
 var Main = function() {};
 
 Main.prototype = {
     preload: function () {
         game.load.image('stars', 'assets/images/bg.jpg');
-        game.load.image('loading', 'assets/images/loading.png');
-        game.load.image('brand', 'assets/images/logo.png');
+        //game.load.image('loading', 'assets/images/loading.png');
+        //game.load.image('brand', 'assets/images/logo.png');
+        game.load.image('sun', 'assets/images/sun/sun_full.png');
         game.load.script('Splash', 'states/Splash.js');
         game.load.script('utils', 'lib/utils.js');
         game.load.script('style', 'lib/style.js');

@@ -16,6 +16,13 @@ GameMenu.prototype = {
     },
 
     init: function () {
+        if (playMusic == true)
+            musicPlayer.volume = 1;
+            
+        // Clear our DIV text
+        $('#poem1').text('');
+        $('#poem2').text('');
+        
         this.titleText = game.make.text(30, 100, "lux", {
             font: 'bold 60pt Sugarpunch',
             fill: '#fffc5b',
@@ -24,6 +31,8 @@ GameMenu.prototype = {
         this.titleText.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
         //this.titleText.anchor.set(0.5);
         this.optionCount = 1;
+        
+        musicPlayer.play();
     },
 
     create: function () {

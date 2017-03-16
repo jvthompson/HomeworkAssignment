@@ -6,13 +6,14 @@ var Game = function () {
     var colors;
     var notes;
     var count;
+    var collectTween;
+    var gameOver;
 };
-
-
-
 
 Game.prototype = {
     init: function() {
+                  
+        this.gameOver = false;
         this.count = 0;
         this.playerDead = false;
         this.idleAnim = 'idleRight';
@@ -42,7 +43,7 @@ Game.prototype = {
     
     createPlayer: function()
     {
-        this.player = game.add.sprite(40, 400, 'lux');
+        this.player = game.add.sprite(40, 500, 'lux');
         this.player.animations.add('walkLeft', [4,5,6,7]);
         this.player.animations.add('walkRight', [0,1,2,3]);
         this.player.animations.add('idleRight', [0]);
@@ -85,11 +86,7 @@ Game.prototype = {
     
     collectLight: function(player, ray)
     {
-        // Animate our Sun and background
-        game.add.tween(this.sun.cameraOffset).to( {x: this.sun.cameraOffset.x, y: this.sun.cameraOffset.y - 50 }, 1000, Phaser.Easing.Back.InOut, true);
-        game.add.tween(this.sun.scale).to( {x: this.sun.scale.x + 0.05, y: this.sun.scale.y + 0.05 }, 1000, Phaser.Easing.Back.InOut, true);
-        $("body").animate({ backgroundColor: this.colors[this.count] }, 2000);
-        
+       
         // play SFX
         sfxPlayer.play(this.notes[Math.floor(Math.random()*this.notes.length)]);
                 
@@ -99,6 +96,37 @@ Game.prototype = {
         
         //destroy our pickup.
         ray.destroy();
+        
+        console.log('player position: ' + this.player.x);
+        
+        // If we just collected our last pickup
+        if (this.player.x > 10500)
+        {
+            this.player.body.velocity = 0;
+            this.gameOver = true;
+            $("body").animate({ backgroundColor: '#ffffff' }, 4000);
+            
+            musicPlayer.fadeOut(4000);
+            seaSFX.fadeIn(2000);
+            seaSFX.play();
+            
+            game.add.tween(this.sun.cameraOffset).to( {x: this.sun.cameraOffset.x, y: this.sun.cameraOffset.y - 1000 }, 4000, Phaser.Easing.Back.InOut, true);
+            game.time.events.add(Phaser.Timer.SECOND * 4, function() {
+                game.camera.fade(0xffffff, 1000);
+                game.camera.onFadeComplete.add(function() {
+                    game.state.start('GameOver');
+                }, this);
+            }, this);
+
+            console.log('you win');
+        }
+        else
+        {
+             // Animate our Sun and background
+            collectTween = game.add.tween(this.sun.cameraOffset).to( {x: this.sun.cameraOffset.x, y: this.sun.cameraOffset.y - 50 }, 1000, Phaser.Easing.Back.InOut, true);
+            game.add.tween(this.sun.scale).to( {x: this.sun.scale.x + 0.05, y: this.sun.scale.y + 0.05 }, 1000, Phaser.Easing.Back.InOut, true);
+            $("body").animate({ backgroundColor: this.colors[this.count] }, 2000);
+        }
     },
     
     onDeath: function()
@@ -110,11 +138,13 @@ Game.prototype = {
     update: function()
     {
         game.stage.backgroundColor = $("body").css("background-color");
-        game.physics.arcade.collide(this.player, layer1);
-        game.physics.arcade.overlap(this.player, rays, this.collectLight, null, this);
-
-        if (this.playerDead == false)
+        if (this.playerDead == false && this.gameOver == false)
         {
+            
+            
+            game.physics.arcade.collide(this.player, layer1);
+            game.physics.arcade.overlap(this.player, rays, this.collectLight, null, this);
+            
             if (cursors.right.isDown)
             {
                 this.player.body.velocity.x = 200;
@@ -146,9 +176,7 @@ Game.prototype = {
                 this.playerDead = true;
                 $("body").animate({ backgroundColor: "black" }, 1000);
                 game.time.events.add(Phaser.Timer.SECOND * 2, this.onDeath, this);
-                
             }
         }
-        
-    }
+    },
 }
