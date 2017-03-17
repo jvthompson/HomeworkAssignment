@@ -14,7 +14,17 @@ var style;
                 fill:defaultColor,
                 stroke: 'rgba(0,0,0,0)'
             },
+            credit: {
+                font: '24pt Sugarpunch',
+                fill:defaultColor,
+                stroke: '#ffffff'
+            },
             hover: {
+                fill: highlightColor,
+                stroke: 'rgba(200, 200, 200, 0.5)'
+            },
+            hoverCredit: {
+                font: '24pt Sugarpunch',
                 fill: highlightColor,
                 stroke: 'rgba(200, 200, 200, 0.5)'
             }

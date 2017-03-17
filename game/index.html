@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lux</title> 
+    <title>Lux</title>
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet"> 
     <style>
         html, body {
             margin: 0;
@@ -18,23 +19,32 @@
             padding: 10px;
             text-align:center;
         }
-        p {
-            font-size: 36pt;
-            font-family: 'Impact', Arial, Helvetica, sans-serif;
-            color: white;
+        .poem {
+            width:50%;
+            float: left;
+            border: 0px;
         }
-        
+        #poem1, #poem2 {
+            text-align: center;
+            font-size: 24pt;
+            font-family: 'Satisfy', cursive;
+        }
     </style>
-    
-
 </head>
 <body bgcolor="#ffffff">
-
+        
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script src="vendor/phaser.js"></script>
+            <script src="main.js"></script>
+            <main id="game"></main>
             <div class="center">
-                <a href="lux.html"><img src="nescart.png"/></a>
-                <p>Blow in the cartridge to begin.</p>
-                <p>  
-                
+                <div class="poem">
+                    <h1 id="poem1"></h1>
+                </div>
+                <div class="poem">
+                    <h1 id="poem2"></h1>
+                </div>
             </div>
         
 </body>

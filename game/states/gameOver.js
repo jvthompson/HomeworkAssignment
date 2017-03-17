@@ -1,8 +1,8 @@
 var GameOver = function () {
     
-    var sunny;
-    var lineCount;
-    var poem;
+    // var sunny;
+    // var lineCount;
+    // var poem;
     
 };
 
@@ -32,9 +32,14 @@ GameOver.prototype = {
         this.sunny.scale.setTo(0.75);
         game.add.tween(this.sunny).to({x:400, y:300}, 5000, Phaser.Easing.Back.InOut, true);
         
-        game.time.events.repeat(Phaser.Timer.SECOND * 3, this.poem.length, this.writePoem, this);
-
-        //console.log("Camera Location : " + game.camera.x + "==" + game.camera.y);
+        if (numLightCollected == 10)
+            game.time.events.repeat(Phaser.Timer.SECOND * 3, this.poem.length, this.writePoem, this);
+        else
+        {
+            $('#poem1').append("Thanks for playing Lux!" + "<br/>");
+            $('#poem2').append("You only got " + numLightCollected + " lights out of 10." +"<br/>");
+            this.resetGame();
+        }
     },
     
     update: function() {
@@ -44,7 +49,6 @@ GameOver.prototype = {
     
     writePoem: function()
     {
-        console.log('write poem');
         if (this.lineCount < 6)
             $('#poem1').append(this.poem[this.lineCount] + "<br/>");
         else
@@ -53,11 +57,16 @@ GameOver.prototype = {
         this.lineCount++;
         if (this.lineCount == this.poem.length)
         {
-            seaSFX.fadeOut(1000);
-            game.time.events.add(Phaser.Timer.SECOND * 10, function() {
+            this.resetGame();
+        }
+    },
+    
+    resetGame: function()
+    {
+        seaSFX.fadeOut(1000);
+        game.time.events.add(Phaser.Timer.SECOND * 10, function() {
                 $("body").animate({ backgroundColor: "black" }, 100);               
                 game.state.start('GameMenu');
             }, this);
-        }
     }
 }

@@ -5,18 +5,15 @@ var playMusic = true;
 var musicPlayer;
 var sfxPlayer;
 var seaSFX;
+var numLightCollected;
 
 var Main = function() {};
 
 Main.prototype = {
     preload: function () {
-        game.load.image('stars', 'assets/images/bg.jpg');
-        //game.load.image('loading', 'assets/images/loading.png');
-        //game.load.image('brand', 'assets/images/logo.png');
         game.load.image('sun', 'assets/images/sun/sun_full.png');
         game.load.image('sun-small', 'assets/images/sun/sun_full_small.png');
         game.load.script('Splash', 'states/splash.js');
-        game.load.script('utils', 'lib/utils.js');
         game.load.script('style', 'lib/style.js');
         game.scale.pageAlignHorizontally = true;
         game.scale.pageAlignVertically = true;
@@ -30,5 +27,6 @@ Main.prototype = {
     }
 }
 
+// Application Startup
 game.state.add('Main', Main);
 game.state.start('Main');
